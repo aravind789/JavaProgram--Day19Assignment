@@ -20,22 +20,25 @@ class Attendance{
 }
 public class EmpWageComputation {
 	final static int TOTAL_WORKING_DAYS=20;
-	final static int WAGE_PER_HOUR=20; 
+	final static int WAGE_PER_HOUR=20;
+	final static int MAX_HRS_IN_MONTH=100;
 	static int attendence;
 	static int oneDayWorkHours;
 	static int dailyWage;
 	static int totalWagesPerMonth=0;
 	static int workingDays=0;
+	static int workingHours=0;
 	public static void main(String[] args) {
 
 		Attendance hrs = new Attendance();
-		while(workingDays<=TOTAL_WORKING_DAYS)
+		while(workingDays<=TOTAL_WORKING_DAYS && workingHours<=MAX_HRS_IN_MONTH )
 		{
 			workingDays++;
 			attendence = (int) (Math.floor(Math.random()*10))%3;
 			oneDayWorkHours=hrs.getWorkHours(attendence);
 			dailyWage=oneDayWorkHours*WAGE_PER_HOUR;
 			totalWagesPerMonth+=dailyWage;
+			workingHours+=oneDayWorkHours;
 			System.out.println("DailyWage on "+workingDays+" th Day= "+dailyWage);
 		}
 		System.out.println("Total Wages Per Month= "+totalWagesPerMonth);
